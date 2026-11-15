@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # Qdrant expose ses métriques nativement
+  - job_name: qdrant
+    static_configs:
+      - targets: ["qdrant:6333"]
+
+  # Phase 4 : métriques de l'API (latence par étape, erreurs, coûts)
+  # - job_name: api
+  #   static_configs:
+  #     - targets: ["api:8000"]

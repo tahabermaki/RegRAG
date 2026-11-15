@@ -1,0 +1,19 @@
+# Secrets
+.env
+
+# Données (jamais dans Git)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Éditeurs / OS
+.vscode/
+.idea/
+.DS_Store

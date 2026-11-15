@@ -1,0 +1,2 @@
+{"id": "q001", "category": "factuelle", "question": "Quelle est la définition d'un « système d'IA » dans l'AI Act ?", "expected_answer": "À compléter en lisant l'article 3 du règlement.", "source_doc": "ai-act-fr", "source_ref": "Article 3, point 1", "reviewed": false}
+{"id": "q002", "category": "hors_corpus", "question": "Quel est le taux du livret A ?", "expected_answer": "REFUS : l'information n'est pas dans le corpus.", "source_doc": null, "source_ref": null, "reviewed": true}

@@ -1,0 +1,56 @@
+# Corpus de démo : documents publics uniquement. Aucun PDF n'est commité dans Git.
+# `make corpus` télécharge chaque entrée dans data/raw/ et écrit data/raw/manifest.lock.json
+# (URL, date de téléchargement, taille, SHA-256) pour la traçabilité.
+#
+# À COMPLÉTER : publications ACPR, EIOPA, CNIL et conditions générales d'assureurs.
+# Ajoute l'URL directe du PDF et passe `enabled` à true.
+
+documents:
+  - id: ai-act-fr
+    title: "Règlement (UE) 2024/1689 — AI Act (FR)"
+    url: "https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:32024R1689"
+    lang: fr
+    source: EUR-Lex
+    enabled: true
+
+  - id: ai-act-en
+    title: "Regulation (EU) 2024/1689 — AI Act (EN)"
+    url: "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32024R1689"
+    lang: en
+    source: EUR-Lex
+    enabled: true
+
+  - id: dora-fr
+    title: "Règlement (UE) 2022/2554 — DORA (FR)"
+    url: "https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:32022R2554"
+    lang: fr
+    source: EUR-Lex
+    enabled: true
+
+  - id: rgpd-fr
+    title: "Règlement (UE) 2016/679 — RGPD (FR)"
+    url: "https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:32016R0679"
+    lang: fr
+    source: EUR-Lex
+    enabled: true
+
+  - id: solvabilite2-fr
+    title: "Directive 2009/138/CE — Solvabilité II (FR)"
+    url: "https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:32009L0138"
+    lang: fr
+    source: EUR-Lex
+    enabled: true
+
+  - id: acpr-ia-gouvernance
+    title: "ACPR — publication sur la gouvernance des algorithmes d'IA"
+    url: ""            # TODO : URL du PDF sur acpr.banque-france.fr
+    lang: fr
+    source: ACPR
+    enabled: false
+
+  - id: cg-assureur-1
+    title: "Conditions générales — assurance habitation (assureur à choisir)"
+    url: ""            # TODO
+    lang: fr
+    source: Assureur
+    enabled: false
