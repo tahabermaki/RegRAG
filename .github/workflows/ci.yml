@@ -1,0 +1,53 @@
+# CI phase 0 : qualité du code + le système démarre-t-il vraiment ?
+# Phase 5 ajoutera : eval smoke, gate qualité vs baseline, commentaire de PR.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - name: Lint
+        run: ruff check src tests scripts ui eval
+      - name: Tests
+        run: PYTHONPATH=src pytest -q
+
+  smoke:
+    # Démarre toute la stack comme en local et vérifie /health
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp .env.example .env
+      - name: Démarrage de la stack
+        run: docker compose up -d --build --wait --wait-timeout 180
+      - name: Santé
+        run: |
+          curl -fsS http://localhost:8000/health | tee health.json
+          grep -q '"status":"ok"' health.json
+      - name: Logs en cas d'échec
+        if: failure()
+        run: docker compose logs --tail=100
+      - name: Arrêt
+        if: always()
+        run: docker compose down -v
+
+  secrets-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

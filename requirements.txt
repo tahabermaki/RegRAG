@@ -1,0 +1,10 @@
+# Dépendances de l'image api/worker (phase 0).
+# Les briques RAG (docling, qdrant-client, sentence-transformers, litellm, langfuse, ragas)
+# seront ajoutées phase par phase, pour garder l'image légère tant qu'on n'en a pas besoin.
+fastapi==0.163.1
+uvicorn[standard]==0.54.0
+pydantic-settings==2.16.3
+httpx==0.28.1
+psycopg[binary]==3.3.9
+redis==5.3.1  # plafonné par arq (redis<6)
+arq==0.28.0
